@@ -55,7 +55,7 @@ function game(){
         alert("You are the winner!");
     } else if (playerCount > computerCount) {
         talert ("Computer wins! Too bad...");
-    } else {
+    } else if (playerCount == computerCount) {
         alert("It's a tie.");
     };
 };
