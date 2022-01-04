@@ -31,10 +31,22 @@ function playRound(playerSelection, computerSelection) {
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', function(){
-    playerSelection = button.innerText;
+    playerSelection = capitalize(button.id);
     computerSelection = computerPlay();
-    game();
+    if ((playerCount < 5) && (computerCount < 5)){
+        game()
+    };
 }));
+
+
+// if ((playerCount < 5) && (computerCount < 5)){
+//     game();
+// } else if (playerCount == 5) {
+//     document.getElementById('final').innerText = "Congratulations! You defeated the computer.";
+// } else if (computerCount == 5) {
+//     document.getElementById('final').innerText = "Uff! Computer defeated you."
+// };
+
 
 
 let playerSelection = "";
@@ -44,20 +56,23 @@ let playerCount = 0;
 let computerCount = 0;
 
 function game() {
-    if ((playerCount < 5) && (computerCount < 5)) {
-        document.getElementById('eachGame').innerText = playRound(playerSelection, computerSelection);
-        if (playRound(playerSelection, computerSelection).includes("win")) {
-            playerCount++;
-        } else if (playRound(playerSelection, computerSelection).includes("lose")) {
-            computerCount++;
+    document.getElementById('eachGame').innerText = playRound(playerSelection, computerSelection);
+    if (playRound(playerSelection, computerSelection).includes("win")) {
+        playerCount++;
+        if (playerCount == 5) {
+            document.getElementById('final').innerText = "Congratulations! You defeated the computer.";
+        } else if (computerCount == 5) {
+            document.getElementById('final').innerText = "Uff! Computer defeated you."
         };
-        document.getElementById('count').innerText = "Your Score: " + playerCount + "   Computer Score: " + computerCount;
-    } else if (playerCount == 5) {
-        document.getElementById('count').innerText = "Your Score: " + playerCount + "   Computer Score: " + computerCount;
-        document.getElementById('final').innerText = "Congratulations! You defeated the computer!";
-    } else if (computerCount == 5) {
-        document.getElementById('count').innerText = "Your Score: " + playerCount + "   Computer Score: " + computerCount;
-        document.getElementById('final').innerText = "Uff! The computer defeated you!";
-    } 
+    } else if (playRound(playerSelection, computerSelection).includes("lose")) {
+        computerCount++;
+        if (playerCount == 5) {
+            document.getElementById('final').innerText = "Congratulations! You defeated the computer.";
+        } else if (computerCount == 5) {
+            document.getElementById('final').innerText = "Uff! Computer defeated you."
+        };
+    };
+    document.getElementById('pCount').innerText = playerCount;
+    document.getElementById('cCount').innerText = computerCount;
 };
 

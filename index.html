@@ -5,17 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+    <div class="header">
+        <h2>Rock Paper Scissor</h2>
+    </div>
     <div id="game">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissor">Scissor</button>
+        <button id="rock"><img src="./image/rock.jpg" alt="rock"><br><h3>Rock</h3></button>
+        <button id="paper"><img src="./image/paper.jpg" alt="paper"><br><h3>Paper</h3></button>
+        <button id="scissor"><img src="./image/scissor.jpg" alt="scissor"><br><h3>Scissor</h3></button>
+
     </div>
     <div id="result">
-        <p id="eachGame"></p>
-        <p id="count"></p>
-        <p id="final"></p>
+        <div class="eachResult">
+            <h3 id="eachGame">Click a picture to start game!</h3>
+        </div>
+        <div class="score">
+            <div>
+                <h3>Your Score:</h3>
+                <p id="pCount">0</p>
+            </div>
+            <div>
+                <h3>Computer Score:</h3>
+                <p id="cCount">0</p>
+            </div>
+        </div>
+        <div>
+            <h2>Final Result:</h2>
+            <h3 id="final">First player that reaches 5 points</h3>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright © Mojito 2022
     </div>
     <script src="./index.js"></script>
 </body>

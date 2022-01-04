@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+}
+
+button{
+    border-radius: 8%;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    border-radius: 8%;
+    margin: 4px;
+}
+
+.score{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+}
+
+.eachResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px;
+}
