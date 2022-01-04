@@ -1,17 +1,17 @@
-let options = ["Rock", "Raper", "Scissor"];
+let options = ["Rock", "Paper", "Scissor"];
 
 function computerPlay() {
-    return options[Math.floor(Math.random()*options.length)];
+    return options[Math.floor(Math.random() * options.length)];
 };
 
 //To format the value of playerSelection
-function capitalize(string){
+function capitalize(string) {
     let new_string = string.toLowerCase();
     return new_string.charAt(0).toUpperCase() + new_string.slice(1);
 }
 
 
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection) {
     if ((playerSelection == "Rock") && (computerSelection == "Scissor")) {
         return "You win! " + playerSelection + " beats " + computerSelection;
     } else if ((playerSelection == "Rock") && (computerSelection == "Paper")) {
@@ -26,38 +26,38 @@ function playRound(playerSelection, computerSelection){
         return "You lose! " + computerSelection + " beats " + playerSelection;
     } else if ((playerSelection == computerSelection)) {
         return "Tie!";
-    } else {
-        return "There's something wrong...";
-    };
+    } ;
 };
 
-function game(){
-    let num = 1;
-    let playerCount = 0;
-    let computerCount = 0;
-    while(num <= 5){
-        const playerSelection = capitalize(prompt("Rock, Paper, Scissor?"));
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-        if (playRound(playerSelection, computerSelection).includes("win")){
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', function(){
+    playerSelection = button.innerText;
+    computerSelection = computerPlay();
+    game();
+}));
+
+
+let playerSelection = "";
+let computerSelection = "";
+
+let playerCount = 0;
+let computerCount = 0;
+
+function game() {
+    if ((playerCount < 5) && (computerCount < 5)) {
+        document.getElementById('eachGame').innerText = playRound(playerSelection, computerSelection);
+        if (playRound(playerSelection, computerSelection).includes("win")) {
             playerCount++;
-            num++;
-        } else if (playRound(playerSelection, computerSelection).includes("lose")){
+        } else if (playRound(playerSelection, computerSelection).includes("lose")) {
             computerCount++;
-            num++;
-        } else if (playRound(playerSelection, computerSelection).includes("Tie")){
-            num++;
-        } else if (playRound(playerSelection, computerSelection).includes("wrong")) {
-            continue;
         };
-    };
-    if (playerCount > computerCount) {
-        alert("You are the winner!");
-    } else if (playerCount > computerCount) {
-        talert ("Computer wins! Too bad...");
-    } else if (playerCount == computerCount) {
-        alert("It's a tie.");
-    };
+        document.getElementById('count').innerText = "Your Score: " + playerCount + "   Computer Score: " + computerCount;
+    } else if (playerCount == 5) {
+        document.getElementById('count').innerText = "Your Score: " + playerCount + "   Computer Score: " + computerCount;
+        document.getElementById('final').innerText = "Congratulations! You defeated the computer!";
+    } else if (computerCount == 5) {
+        document.getElementById('count').innerText = "Your Score: " + playerCount + "   Computer Score: " + computerCount;
+        document.getElementById('final').innerText = "Uff! The computer defeated you!";
+    } 
 };
 
-game();
