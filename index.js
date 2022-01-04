@@ -38,17 +38,6 @@ buttons.forEach(button => button.addEventListener('click', function(){
     };
 }));
 
-
-// if ((playerCount < 5) && (computerCount < 5)){
-//     game();
-// } else if (playerCount == 5) {
-//     document.getElementById('final').innerText = "Congratulations! You defeated the computer.";
-// } else if (computerCount == 5) {
-//     document.getElementById('final').innerText = "Uff! Computer defeated you."
-// };
-
-
-
 let playerSelection = "";
 let computerSelection = "";
 
